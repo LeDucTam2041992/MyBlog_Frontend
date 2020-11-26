@@ -1,0 +1,21 @@
+<h2 style="text-align: center">Login</h2>
+<form class="example-form" [formGroup]="loginForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Account</mat-label>
+    <input matInput formControlName="userName" placeholder="Enter the account">
+    <mat-error *ngIf="loginForm.get('userName').hasError('required')">
+      Account is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" placeholder="Enter the password">
+    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="loginForm.value" [disabled]="loginForm.invalid">Login</button>
+    </mat-dialog-actions>
+</form>

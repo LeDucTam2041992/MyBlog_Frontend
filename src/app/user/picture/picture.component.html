@@ -1,0 +1,26 @@
+<!--<mat-grid-list cols="5" rowHeight="1:1" style="margin: 0.5rem">-->
+<!--  <mat-grid-tile>-->
+<!--    <input type="file" hidden #fileUpload (change)="showPre($event)">-->
+<!--    <img [src]="imgSrc" height="125" width="100" (click)="fileUpload.click()">-->
+<!--    <button (click)="submit()">Sub</button>-->
+<!--    <audio controls>-->
+<!--      <source [src]="imgSrc" type="audio/mpeg">-->
+<!--    </audio>-->
+<!--  </mat-grid-tile>-->
+<!--</mat-grid-list>-->
+<input type="file" hidden #fileUpload (change)="submit($event)">
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="fileUpload.click()" >
+  <mat-icon>add</mat-icon>
+</button>
+<mat-form-field appearance="fill">
+  <mat-label>Size Images</mat-label>
+  <mat-select [(ngModel)]="size">
+    <mat-option value="2">Extra</mat-option>
+    <mat-option value="3">Large</mat-option>
+    <mat-option value="4">Medium</mat-option>
+    <mat-option value="5">Small</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-grid-list cols="{{size}}" rowHeight="1:1" style="margin: 0.5rem">
+  <mat-grid-tile *ngFor="let img of listImage"><img src="{{img.url}}" (dblclick)="showIm()"></mat-grid-tile>
+</mat-grid-list>
